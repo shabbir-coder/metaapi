@@ -10,7 +10,7 @@ const { initializeSocket } = require('./api/middlewares/socket');
 require('dotenv').config();
 
 const app = express();
-const port = process.env.PORT || 4008;  // ✅ FIXED - Use Azure's PORT
+const port = process.env.PORT || 3000;  // ✅ FIXED - Use Azure's PORT
 
 connectDB();
 
