@@ -10,7 +10,7 @@ const { initializeSocket } = require('./api/middlewares/socket');
 require('dotenv').config();
 
 const app = express();
-const port = 4008;
+const port = process.env.PORT || 4008;  // ✅ FIXED - Use Azure's PORT
 
 connectDB();
 
@@ -33,14 +33,15 @@ app.get('/app', (req, res) => {
 const server = http.createServer(app);
 
 server.listen(port, () => {
-  console.log(`Secure WebSocket server is running at https://beta.izzan.org:${port}`);
+  console.log(`Server is running on port ${port}`);  // ✅ Better logging
 });
 
 const io = initializeSocket(server);
 app.set('io', io);
 
+// ✅ FIXED - Serve index.html for all other routes (SPA support)
 app.get('*', (req, res) => {
-   res.redirect('app');
+   res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
 module.exports = { io };
