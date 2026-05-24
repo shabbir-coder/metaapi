@@ -1,5 +1,6 @@
 const express = require('express');
-const connectDB = require('./connection/db');
+const { connectDB } = require('./connection/db');
+
 const cors = require('cors');
 const path = require('path');
 const fs = require('fs');
