@@ -16,7 +16,6 @@ const connectDB = async () => {
     await mongoose.connect(mongoURI, {
       // CosmosDB recommended options
       retryWrites: false,        // CosmosDB does not support retryWrites
-      tls: true,                 // Required for CosmosDB
     });
     console.log('✅ Connected to CosmosDB via Mongoose');
 
